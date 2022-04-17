@@ -1,7 +1,9 @@
+import styles from "../css/Index.module.css"
 
-function Index() {
+function Index({className}) {
   return (
-    <div></div>
+    <div className={className+' '+styles.index}>
+    </div>
   );
 }
 

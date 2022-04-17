@@ -3,30 +3,28 @@
     position: relative;
     flex-direction: column;
     left:400px;
-    height: 100%;
-    min-height: 100%;
+    height: fit-content;
     width: calc(100% - 400px);
   }
 
 .main_header{
-    height:8%;
+    height:80px;
+    width:100%;
     box-shadow: 0 3px 5px 0 rgb(0 0 0 / 5%);
     z-index: 2;
 }
 .main_body{
     display: flex;
     height: fit-content;
-    min-height: 92%;
     flex-direction: row;
 }
 
-.main_contents{
-    background-color:white;
+.main_body_contents{
     width: 80%;
+    height: fit-content;
     min-height: 100%;
 }
-.main_index{
+.main_body_index{
     position: relative;
     width:20%;
-    background-color: #ddd; 
 }
