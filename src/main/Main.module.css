@@ -1,6 +1,32 @@
 .main{
     display: flex;
+    position: relative;
+    flex-direction: column;
+    left:400px;
     height: 100%;
-    width: 100%;
-    background-color: gray;
+    min-height: 100%;
+    width: calc(100% - 400px);
   }
+
+.main_header{
+    height:8%;
+    box-shadow: 0 3px 5px 0 rgb(0 0 0 / 5%);
+    z-index: 2;
+}
+.main_body{
+    display: flex;
+    height: fit-content;
+    min-height: 92%;
+    flex-direction: row;
+}
+
+.main_contents{
+    background-color:white;
+    width: 80%;
+    min-height: 100%;
+}
+.main_index{
+    position: relative;
+    width:20%;
+    background-color: #ddd; 
+}

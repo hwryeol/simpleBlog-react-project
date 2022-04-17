@@ -1,10 +1,9 @@
 .nav{
     display: flex;
+    position: fixed;
     flex-direction: column;
-    position: relative;
     height: 100%;
-    width:300px;
-    color:white;
+    width:400px;
   }
 .nav_bgImage{
     position:absolute;
@@ -27,12 +26,18 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    border-left: 1px solid #ddd;
+    color:white;
     margin: 30px 20px;
     height: 60%;
 }
 .nav_index > *{
-    text-align: center;
-    margin: 20px 0px;
+    cursor: pointer;
+    margin: 10px 0px;
+    margin-left: 20px;
+}
+.nav_index>*:hover{
+    text-decoration: underline;
 }
 .nav_footer{
     display: flex;
@@ -43,6 +48,11 @@
 .nav_footer>*{
     width:24px;
     height: 24px;
+    cursor: pointer;
+    color:white;
+    opacity: 30%;
     margin: 0px 20px;
-    background-color: white;
+}
+.nav_footer>*:hover{
+    opacity: 100%;
 }
