@@ -1,3 +1,7 @@
 .contents{
     padding: 30px 30px 10px;
 }
+blockquote{
+    border-left: 4px solid #ddd;
+    padding-left: 20px;
+}

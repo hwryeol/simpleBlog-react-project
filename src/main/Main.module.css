@@ -20,11 +20,19 @@
 }
 
 .main_body_contents{
-    width: 80%;
+    width: 70%;
+    height: fit-content;
+    min-height: 100%;
+}
+.main_body_contentsList{
+    width: 60%;
     height: fit-content;
     min-height: 100%;
 }
 .main_body_index{
-    position: relative;
+    position: fixed;
+    height: 100%;
+    right:0%;
     width:20%;
+    border-left: 1px solid #ddd;
 }

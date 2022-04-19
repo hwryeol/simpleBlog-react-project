@@ -1,5 +1,6 @@
 html, body, #root{
     width:100%;
+    font-family: 'Noto Sans KR', sans-serif;
     height: 100%;
     margin: 0;
 }
