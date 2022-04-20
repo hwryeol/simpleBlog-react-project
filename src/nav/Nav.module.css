@@ -18,7 +18,7 @@
     display: flex;
     flex-direction: column;
     background-color: white;
-    height: 20%;
+    height: 200px;
     margin: 30px 20px;
 }
 
@@ -29,12 +29,14 @@
     border-left: 1px solid #ddd;
     color:white;
     margin: 30px 20px;
-    height: 60%;
+    height: 60%;  
 }
 .nav_index > *{
     cursor: pointer;
     margin: 10px 0px;
     margin-left: 20px;
+    text-decoration: none;
+    color:white;
 }
 .nav_index>*:hover{
     text-decoration: underline;

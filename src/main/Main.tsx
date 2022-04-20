@@ -1,8 +1,15 @@
 import styles from "./Main.module.css"
-import Contents from "./tsx/Contents.tsx"
+import Contents from "./tsx/route/Contents.tsx"
+import ContentsList from "./tsx/route/ContentsList.tsx"
 import Index from "./tsx/Index.tsx"
 import Header from "./tsx/Header.tsx"
-import ContentsList from "./tsx/ContentsList.tsx"
+import { useEffect, useState } from "react"
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+
 import { marked } from 'marked';
 
 function Main() {
@@ -26,6 +33,7 @@ function Main() {
   
   Varius vivamus ut mollis pharetra gravida aliquam sem purus ridiculus ornare, tristique parturient blandit taciti diam nascetur risus imperdiet enim accumsan, morbi sollicitudin lectus erat montes nunc justo tortor phasellus. Venenatis viverra inceptos pretium hac cursus erat, porta vulputate aliquet blandit maecenas, natoque curabitur fames aenean nisl. Molestie massa ridiculus maecenas cras vivamus sollicitudin sociis, cursus cum lobortis sociosqu tempor semper litora, class leo penatibus quis hendrerit non. Habitant ante eros ridiculus erat diam suspendisse odio nibh, nullam class volutpat fringilla quisque pulvinar ornare porttitor nascetur, cursus nec euismod sagittis fusce parturient placerat. Habitant risus aliquet cubilia euismod hac platea senectus tincidunt libero, penatibus augue ultricies facilisi mattis vivamus potenti convallis magna pulvinar, bibendum sociis eu suspendisse fames sodales eros accumsan. Dui suscipit tellus accumsan praesent cum elementum auctor, dis pharetra nibh lectus sapien fringilla, vulputate metus libero platea taciti diam. Vel tristique habitant mus in fames conubia augue fringilla, imperdiet integer cras molestie parturient dictum senectus ullamcorper, vehicula est nullam eleifend morbi viverra luctus. Fusce dis dignissim dictumst velit accumsan sem quam potenti ac, porta scelerisque commodo quisque magna suspendisse lacus cras sagittis, vulputate tempus sociosqu bibendum ultrices nam orci morbi. Sagittis ultrices rutrum porttitor viverra blandit aliquam aptent quisque luctus, conubia vivamus hac morbi posuere aenean cras facilisis. Leo bibendum vitae mattis maecenas parturient nam torquent eleifend sociis suspendisse, nisl ante aptent tortor semper pretium volutpat morbi posuere, etiam himenaeos porta accumsan rutrum quisque a facilisis libero. 
   `;
+  const [postData,setPostData] = useState({});
   const markedData = marked.parse(data);
   const findIdTagElementList = markedData.match(/<.*id.*>.*>/g)
   const idTagInputText:Array<string> = [];
@@ -36,15 +44,20 @@ function Main() {
     idTagInputId.push('#'+data.match(/id=".*"/g)[0].slice(4,-1));
   })
   
-  
 
   return (
     <div id="main" className={styles.main}>
-    <Header className={styles.main_header} />
+    <Header className={styles.main_header} postData={postData} />
       <div className={styles.main_body}>
-            <ContentsList className={styles.main_body_contentsList}/>
-            {/* <Contents className={styles.main_body_contents} data={markedData} /> */}
-            {/* <Index className={styles.main_body_index} idTagInputText={idTagInputText} idTagInputId={idTagInputId} /> */}
+          <Routes>
+            <Route path="/contents" element={<ContentsList className={styles.main_body_contentsList} setPostData={setPostData}/>}></Route>
+            <Route path="/contents/*" element={
+              <>
+                <Contents className={styles.main_body_contents} data={markedData}/>
+                <Index className={styles.main_body_index} idTagInputText={idTagInputText} idTagInputId={idTagInputId} />
+              </>
+            }/>
+          </Routes>    
         </div>
       </div>
   );

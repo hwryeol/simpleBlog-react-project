@@ -3,6 +3,7 @@ import styles from "./Nav.module.css"
 import { AiFillMail, AiFillGithub,  } from "react-icons/ai";
 import { BsFillRssFill } from "react-icons/bs";
 import { ReactNode } from "react";
+import { Link } from "react-router-dom";
 
 function Nav() {
 
@@ -30,14 +31,16 @@ function Nav() {
     return (
         <div id="nav" className={styles.nav}>
             <img className={styles.nav_bgImage} src={nav_bgImage}/>
-            <div className={styles.nav_profile}>
-                <div className={styles.nav_profile_aboutMe}>fafa</div>
-            </div>
+            <Link to="/">
+                <div className={styles.nav_profile}>
+                    <div className={styles.nav_profile_aboutMe}>fafa</div>
+                </div>
+            </Link>
             <div className={styles.nav_index}>
                 {
                     categoryList.map((data):ReactNode=>{
                         return (
-                        <div>{data.name}</div>
+                            <Link to={`/${data.href}`}>{data.name}</Link>
                         )
                     })
                 }

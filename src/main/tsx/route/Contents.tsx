@@ -1,5 +1,4 @@
-import { marked } from 'marked';
-import styles from '../css/Contents.module.css'
+import styles from '../../css/Contents.module.css'
 
 function Contents({className,data}) {
 
