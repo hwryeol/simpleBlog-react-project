@@ -1,9 +1,10 @@
 import { ReactNode, useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer'
 import styles from '../../css/ContentsList.module.css'
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
-function ContentsList({className,setPostData}) {
+function ContentsList({className,setPostData,postData}) {
+    let params = useParams()
     const [ref,inView] = useInView()
     const [item,setItem] = useState([])
     useEffect(()=>{
@@ -31,11 +32,16 @@ function ContentsList({className,setPostData}) {
             getItems();
         }
     },[inView])
+    useEffect(()=>{
+        setPostData({
+            title:params.category.toUpperCase()
+          });
+    },[params.category])
   return (
     <div className={className+' '+styles.contentsList}>
         <div className={styles.container}>
         {item.map((post):ReactNode=>{
-            return (<Link to={`/contents/${post.id}`} onClick={()=>{
+            return (<Link to={`/contents/${params.category}/${post.id}`} onClick={()=>{
                 setPostData(post);
             }}><div className={styles.post}>
                 <div className={styles.post_title}>{post.title}</div>

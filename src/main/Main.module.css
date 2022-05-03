@@ -36,3 +36,8 @@
     width:20%;
     border-left: 1px solid #ddd;
 }
+@media screen and (max-width: 800px) {
+    .main{left:auto;
+    width:100%;
+    }
+}

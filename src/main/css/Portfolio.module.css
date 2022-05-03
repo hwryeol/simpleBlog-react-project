@@ -1,0 +1,17 @@
+.portfolio{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 50px;
+    padding-top: 10px;
+    box-sizing: border-box;
+}
+.portfolio >*{
+    background-color: beige;
+    width:15rem;
+    height: 10rem;
+    margin: 0px 20px;
+    margin-top: 20px;
+}
+.portfolio > *:hover{
+    transform:scale(1.1);  
+}

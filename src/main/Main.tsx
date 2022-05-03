@@ -1,13 +1,15 @@
 import styles from "./Main.module.css"
 import Contents from "./tsx/route/Contents.tsx"
 import ContentsList from "./tsx/route/ContentsList.tsx"
+import AboutMe from "./tsx/route/AboutMe.tsx"
+import Portfolio from "./tsx/route/Portfolio.tsx"
 import Index from "./tsx/Index.tsx"
 import Header from "./tsx/Header.tsx"
 import { useEffect, useState } from "react"
 import {
   BrowserRouter,
   Routes,
-  Route,
+  Route
 } from "react-router-dom";
 
 import { marked } from 'marked';
@@ -44,17 +46,30 @@ function Main() {
     idTagInputId.push('#'+data.match(/id=".*"/g)[0].slice(4,-1));
   })
   
-
+  useEffect(()=>{
+    setPostData({});
+  },[])
+  
   return (
     <div id="main" className={styles.main}>
     <Header className={styles.main_header} postData={postData} />
       <div className={styles.main_body}>
           <Routes>
-            <Route path="/contents" element={<ContentsList className={styles.main_body_contentsList} setPostData={setPostData}/>}></Route>
-            <Route path="/contents/*" element={
+            <Route path="/contents/:category" element={<ContentsList className={styles.main_body_contentsList} setPostData={setPostData}/>}></Route>
+            <Route path="/contents/:category/:id" element={
               <>
                 <Contents className={styles.main_body_contents} data={markedData}/>
                 <Index className={styles.main_body_index} idTagInputText={idTagInputText} idTagInputId={idTagInputId} />
+              </>
+            }/>
+            <Route path="/" element={
+              <>
+                <AboutMe className={styles.main_body_aboutme} setPostData={setPostData} data={markedData}/>
+              </>
+            }/>
+            <Route path="/portfolio" element={
+              <>
+                <Portfolio className={styles.main_body_aboutme} setPostData={setPostData} data={markedData}/>
               </>
             }/>
           </Routes>    
